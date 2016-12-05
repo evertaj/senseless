@@ -1,0 +1,41 @@
+<% provide(:page_title, @user.username) %>
+<% provide(:active_menu_item, 'Blog') %>
+
+<div class="row">
+    <div class="col-md-3 col-sm-3">               
+      <div class="user-wrapper" style="outline: 1px solid #C3C3C3;">
+        <%= image_tag("default_avatar.png", class: "img-responsive") %> 
+        <div class="description">
+          <h4><%= @user.username %></h4><span class="glyphicons glyphicons-pencil"></span>
+          <h5> <strong> <%= @user.email %> </strong></h5>
+          <p>Some bio comes here...</p>
+          <% if current_user == @user %>
+            <%= link_to "Edit profile", edit_user_registration_path, class: "btn btn-info btn-sm", style: "margin: 0px;" %>
+          <% end %>
+        </div>
+      </div><br>
+    </div>
+
+    <div class="col-md-9 col-sm-9  user-wrapper">
+      <div>
+        <table class="table">
+        <% @author_posts.each do |post| %>
+          <tr> 
+            <td> 
+              <div style="float: left; margin-top:7px; font-size:17px;"><%= link_to post.title, post %>: <%= truncate(strip_tags(post.body), length:50, :separator => ' ') %></div>
+              <% if current_user && current_user == @user %>
+              <%= link_to "Delete", post_path(post), method: :delete,
+                                                     data: {confirm: "Are you sure?"}, 
+                                                     style: 'float: right;', class: 'btn btn-sm btn-danger'%>
+              <%= link_to "Edit", edit_post_path(post), style: ' float: right;', class: 'btn btn-sm btn-warning' %>
+              <% end %>
+            </td> 
+          </tr>
+        <% end %>
+        <% if current_user && current_user == @user %> 
+          <tr><td><%= link_to "New post...", new_post_path, class: "btn btn-primary btn-md" %></td></tr>
+        <% end %>
+      </table>
+      </div>
+    </div>
+</div>

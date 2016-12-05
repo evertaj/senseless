@@ -1,0 +1,9 @@
+<% provide(:page_title, 'All posts') %>
+<% provide(:active_menu_item, 'blog') %>
+
+<div class="row posts index">
+  <%= render @posts %>
+</div>
+<div class = "apple_pagination">
+  <%= will_paginate @posts %>
+</div>

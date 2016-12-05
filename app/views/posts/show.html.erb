@@ -1,0 +1,44 @@
+<% provide(:page_title, @post.title) %>
+<% provide(:active_menu_item, 'blog') %>
+
+<div class="row">
+  <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-2">
+    <div class = 'post_topper' style = 'background-image: url(<%= @post.banner_image_url%>)'></div><br>
+    <h2>
+      <%= @post.title %>
+      <div class = "btn btn-danger btn-sm"> by <%= link_to @post.user.username, user_path(@post.user.username), style: 'color: white;'%> </div>
+      <% if current_user && current_user.own?(@post) %> 
+        <%= link_to image_tag('Edit.png'), edit_post_path(@post) %> 
+      <% end %>
+    </h2>
+    <%= @post.body.html_safe %>
+    <br>
+    <div style = 'margin-top: 5px; font-style: italic;'>
+        <%= @post.created_at.strftime("%d %b. %Y")%> <%= @post.created_at.strftime("%H:%M")%>
+    </div>
+    <hr style = 'background-color: black; height: 1px;'>
+    <table class="table table-striped">
+        <% @showed_comments.order(:created_at).map do |comment| %>  
+          <tr> 
+            <td>
+              <%= link_to comment.user.username, user_path(comment.user.username), style: 'color: #c14945; font-weight: 500;' %> 
+              said: <%=comment.text %> 
+              <span style = 'color: gray'>(<%= comment.created_at.strftime("%d %b. %H:%M")%>)</span>
+              <% if current_user && current_user.is_admin?%>
+                <%= link_to "Delete", post_comment_path(@post, comment), 
+                                                    method: :delete,
+                                                    data: {confirm: "Are you sure?"}, 
+                                                    style: 'float: right;', class: 'btn btn-sm btn-danger'%>
+                <% unless comment.approved %>
+                  <%= link_to 'Approve', post_comment_approve_path(@post, comment), class: 'btn btn-sm btn-warning', style: 'float: right; margin-right: 15px'%>
+                <% end %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      <% if current_user %> <tr><td> 
+      <%= render 'comments/form', post: @post, comment: @comment %>
+      </td></tr> <% end %>
+    </table> 
+  </div>   
+</div>

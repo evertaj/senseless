@@ -1,0 +1,62 @@
+<%= form_for(post) do |f| %>
+  <% if post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+      <ul>
+      <% post.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <br>
+  <div class="row edit_post">
+    <div class="col-md-4">
+      <div class="card">
+          <% if @post.new_record? %>
+            <h4 class="card-title last">New post</h4>
+          <% else %>
+            <h4 class="card-title last">
+              <b>Edit</b>
+              <span, style='font-weight: 300;'>"<%= @post.title %>"</span>
+            </h4>
+          <% end %>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">
+            <div class="field">
+              <%= f.label :title %>
+              <%= f.text_field :title, class: 'form-control' %>
+            </div>
+          </li>
+          <li class="list-group-item">
+            <div class="field">
+              <%= f.label :description %>
+              <%= f.text_field :description, class: 'form-control'  %>
+            </div></li>
+          <li class="list-group-item">
+            <div class="field">
+              <%= f.label :banner_image_url %>
+              <%= f.text_field :banner_image_url, class: 'form-control'   %>
+            </div>
+          </li>
+        </ul>
+        <div class="card-block last">  
+          <div class="action", style="display: inline; float: left;">
+            <%= f.submit class: "btn btn-primary"%>
+          </div>
+          <% if @post.persisted? %>
+            <%= link_to "Cancel", @post_path, class: "btn btn-danger", style: "float: right;" %>
+          <% else %>
+            <%= link_to "Cancel", root_path, class: "btn btn-danger", style: "float: right;" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+      <div class="col-md-8">
+        <div class="field">
+        <%= f.text_area :body %>
+      </div>
+  </div>
+  <br>
+<% end %>
