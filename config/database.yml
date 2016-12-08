@@ -22,4 +22,3 @@ development:
 test:
   <<: *default
   database: lol_test
-
