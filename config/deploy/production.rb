@@ -16,6 +16,7 @@ role :db,  %w{deploy@example.com}
 
 
 set :stage, :production
+set :ssh_options,{ forward_agent: true, user: fetch(:user), keys: %w(~/.ssh/id_rsa.pub) }
 
 # Replace 127.0.0.1 with your server's IP address!
 server '138.68.92.215', user: 'deploy', roles: %w{web app}
