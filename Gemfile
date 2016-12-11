@@ -46,3 +46,7 @@ group :development do
   gem 'web-console'
   gem 'mina-puma', require: false
 end
+
+group :production do
+  gem 'therubyracer', platforms: :ruby
+end
