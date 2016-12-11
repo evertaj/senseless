@@ -1,9 +1,9 @@
 class CommentsController < ApplicationController
+  before_action :set_post
+  before_action :set_comment, only: [:destroy, :approve]
   before_action :authenticate_user!
   before_action :owner_rights, only: [:destroy]
   before_action :admin_rights, only: [:approve]
-  before_action :set_post
-  before_action :set_comment, only: [:destroy, :approve]
   
   def create
     @comment = Comment.new(comment_params)

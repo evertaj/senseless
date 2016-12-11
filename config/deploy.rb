@@ -1,75 +1,73 @@
-# config valid only for Capistrano 3.1
+require 'mina/rails'
+require 'mina/git'
+# require 'mina/rbenv'  # for rbenv support. (https://rbenv.org)
+require 'mina/rvm'    # for rvm support. (https://rvm.io)
 
-set :application, 'SeselessBlog'
-set :repo_url, 'git@github.com/evertaj/senseless.git'
+# Basic settings:
+#   domain       - The hostname to SSH to.
+#   deploy_to    - Path to deploy into.
+#   repository   - Git repo to clone from. (needed by mina/git)
+#   branch       - Branch name to deploy. (needed by mina/git)
 
-set :deploy_to, '/home/deploy/seselessblog'
+set :domain, 'evertaj.ru'
+set :deploy_to, '/home/deploy/evertaj.ru'
+set :repository, 'https://github.com/evertaj/senseless'
+set :branch, 'master'
 
-set :linked_files, %w{config/database.yml config/secrets.yml}
-set :linked_dirs, %w{log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
+# Optional settings:
+set :user, 'deploy'          # Username in the server to SSH to.
+set :port, '22'           # SSH port number.
+set :ssh_options, '-A'
+set :term_mode, nil
+#   set :forward_agent, true     # SSH forward_agent.
 
+# shared dirs and files will be symlinked into the app-folder by the 'deploy:link_shared_paths' step.
+# set :shared_dirs, fetch(:shared_dirs, []).push('somedir')
+# set :shared_files, fetch(:shared_files, []).push('config/database.yml', 'config/secrets.yml')
 
-namespace :deploy do
+# This task is the environment that is loaded for all remote run commands, such as
+# `mina deploy` or `mina rake`.
+task :environment do
+  # If you're using rbenv, use this to load the rbenv environment.
+  # Be sure to commit your .ruby-version or .rbenv-version to your repository.
+  # invoke :'rbenv:load'
 
-  desc 'Restart application'
-  task :restart do
-    on roles(:app), in: :sequence, wait: 5 do
-      execute :touch, release_path.join('tmp/restart.txt')
-    end
-  end
-
-  after :publishing, 'deploy:restart'
-  after :finishing, 'deploy:cleanup'
+  # For those using RVM, use this to load an RVM version@gemset.
+  invoke :'rvm:use', 'ruby-1.9.3-p484@default'
 end
-# Default branch is :master
-# ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }
 
-# Default deploy_to directory is /var/www/my_app
-# set :deploy_to, '/var/www/my_app'
-
-# Default value for :scm is :git
-# set :scm, :git
-
-# Default value for :format is :pretty
-# set :format, :pretty
-
-# Default value for :log_level is :debug
-# set :log_level, :debug
-
-# Default value for :pty is false
-# set :pty, true
-
-# Default value for :linked_files is []
-# set :linked_files, %w{config/database.yml}
-
-# Default value for linked_dirs is []
-# set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
-
-# Default value for default_env is {}
-# set :default_env, { path: "/opt/ruby/bin:$PATH" }
-
-# Default value for keep_releases is 5
-# set :keep_releases, 5
-
-namespace :deploy do
-
-  desc 'Restart application'
-  task :restart do
-    on roles(:app), in: :sequence, wait: 5 do
-      # Your restart mechanism here, for example:
-      # execute :touch, release_path.join('tmp/restart.txt')
-    end
-  end
-
-  after :publishing, :restart
-
-  after :restart, :clear_cache do
-    on roles(:web), in: :groups, limit: 3, wait: 10 do
-      # Here we can do anything such as:
-      # within release_path do
-      #   execute :rake, 'cache:clear'
-      # end
-    end
-  end
-
+# Put any custom commands you need to run at setup
+# All paths in `shared_dirs` and `shared_paths` will be created on their own.
+task :setup do
+  # command %{rbenv install 2.3.0}
 end
+
+desc "Deploys the current version to the server."
+task :deploy do
+  # uncomment this line to make sure you pushed your local branch to the remote origin
+  # invoke :'git:ensure_pushed'
+  deploy do
+    # Put things that will set up an empty directory into a fully set-up
+    # instance of your project.
+    invoke :'git:clone'
+    invoke :'deploy:link_shared_paths'
+    invoke :'bundle:install'
+    #invoke :'rails:db_migrate'
+    #invoke :'rails:assets_precompile'
+    invoke :'deploy:cleanup'
+
+    on :launch do
+      in_path(fetch(:current_path)) do
+        command %{mkdir -p tmp/}
+        command %{touch tmp/restart.txt}
+      end
+    end
+  end
+
+  # you can use `run :local` to run tasks on local machine before of after the deploy scripts
+  # run :local { say 'done' }
+end
+
+# For help in making your deploy script, see the Mina documentation:
+#
+#  - https://github.com/mina-deploy/mina/tree/master/docs

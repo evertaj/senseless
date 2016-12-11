@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get '/contact' => 'pages#contact', as: :contact
   root to: 'posts#index'
   resources :posts do 
-    resources :comments, only: [:create, :destroy] do
+    resources :comments, param: :comment_id, only: [:create, :destroy] do
       get :approve
     end
   end
