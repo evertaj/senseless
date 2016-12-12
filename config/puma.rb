@@ -13,6 +13,11 @@ port        ENV.fetch("PORT") { 3000 }
 
 # Specifies the `environment` that Puma will run in.
 #
+
+bind "/home/deploy/evertaj.ru/production/shared/tmp/sockets/puma.sock"
+pidfile "/home/deploy/evertaj.ru/production/shared/tmp/pids/puma.pid"
+state_path "/home/deploy/evertaj.ru/production/shared/tmp/state/puma.state"
+
 environment ENV.fetch("RAILS_ENV") { "development" }
 
 # Specifies the number of `workers` to boot in clustered mode.
