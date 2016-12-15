@@ -21,7 +21,6 @@ environment ENV['RAILS_ENV'] || 'production'
 
 daemonize true
 
-pidfile "/var/www/myapp/shared/tmp/pids/puma.pid"
 stdout_redirect "/home/deploy/evertaj.ru/production/shared/tmp/log/stdout", "/home/deploy/evertaj.ru/production/shared/tmp/log/stderr"
 
 threads 0, 16
