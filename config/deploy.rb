@@ -16,6 +16,7 @@ set :deploy_to, "/home/deploy/evertaj.ru/#{fetch(:rails_env)}"
 set :repository, 'https://github.com/evertaj/senseless'
 set :branch, 'master'
 set :puma_socket, "#{fetch(:shared_path)}/tmp/sockets/puma.sock"
+set :puma_config, "#{fetch(:current_path)}/config/puma.rb"
 
 # Optional settings:
 set :user, 'deploy'          # Username in the server to SSH to.
