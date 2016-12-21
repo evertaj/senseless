@@ -23,7 +23,7 @@ document.addEventListener("turbolinks:load", function() {
                   plugins: "image emoticons",
                   toolbar: "undo redo | styleselect | alignleft aligncenter alignright alignjustify | bold italic | emoticons image",
                   height : 401
-                  mode : "exact",
+                  mode : "exact"
                   elements : "question_text"
    });
 })
