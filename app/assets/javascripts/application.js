@@ -22,7 +22,7 @@ document.addEventListener("turbolinks:load", function() {
   tinymce.init({  selector:'textarea#post_body',
                   plugins: "image emoticons",
                   toolbar: "undo redo | styleselect | alignleft aligncenter alignright alignjustify | bold italic | emoticons image",
-                  height : 400
+                  height : 401
    });
 })
 
