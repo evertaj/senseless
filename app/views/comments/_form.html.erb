@@ -1,5 +1,5 @@
 <%= form_for [post, comment] do |f| %>
     <%= f.text_field :text, style: 'border-radius: 5px; width: 100%;'%>
-    <%= f.submit value: 'Create comment', class: 'btn btn-danger btn-sm', style: 'margin-top: 10px; float: right'%>
+    <%= f.submit value: 'Create comment', class: 'btn btn-outline-secondary btn-sm', style: 'margin-top: 10px; float: right; color: grey'%>
     <%= link_to '~It may take some time to approve ur comment', about_path, style: 'color: grey;' %>
 <% end %>
