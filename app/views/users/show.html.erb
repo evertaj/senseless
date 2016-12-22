@@ -35,7 +35,7 @@
           <tr><td><div style="margin-top:7px; font-size:16px;"><%= link_to "New post...", new_post_path, style:"color: gray;"%></div></td></tr>
         <% end %>
       </table>
-      <% if current_user.is_admin? %> 
+      <% if current_user && current_user.is_admin? %> 
       <table class="table">
         <% Comment.where(approved: false).each do |comment| %>
           <tr>
