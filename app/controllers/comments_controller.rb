@@ -1,6 +1,7 @@
 class CommentsController < ApplicationController
   before_action :set_post
-  before_action :set_comment, only: [:destroy, :approve]
+  before_action :set_comment, only: [:destroy]
+  before_action :set_comment_approve, only: [:approve]
   before_action :authenticate_user!
   before_action :owner_rights, only: [:destroy]
   before_action :admin_rights, only: [:approve]
@@ -30,10 +31,15 @@ class CommentsController < ApplicationController
 
   private
     def set_comment
+      @comment = Comment.find(params[:id])
+    end
+
+    def set_comment_approve
       @comment = Comment.find(params[:comment_id])
     end
 
-    def set_post
+
+  def set_post
       @post = Post.friendly.find(params[:post_id])
     end
 
@@ -51,7 +57,7 @@ class CommentsController < ApplicationController
     def admin_rights
       unless current_user.email == 'overroy@mail.ru'
         flash[:error] = 'You have no rights'
-        redirect_to root_url
+        redirect_to @post
       end
     end
 end
