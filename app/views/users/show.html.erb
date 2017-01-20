@@ -8,8 +8,12 @@
         <div class="description">
           <h4><%= @user.username %></h4>
           <h5> <strong> <%= @user.email %> </strong></h5>
-          <i><%= @user.city %></i>
+          <% if @user.city %>
+            <i><%= @user.city %></i>
+          <%end%>
+          <% if @user.bio %>
           <p><%= @user.bio %> </p>
+          <%end%>
           <% if current_user == @user %>
             <%= link_to "Edit profile", edit_user_registration_path, class: "btn btn-primary btn-sm", style: "margin: 0px;" %>
           <% end %>
@@ -35,35 +39,6 @@
         <% if current_user && current_user == @user %> 
           <tr><td><div style="margin-top:7px; font-size:16px;"><%= link_to "New post...", new_post_path, style:"color: gray;"%></div></td></tr>
         <% end %>
-      </table>
-      <% if current_user && current_user.is_admin? %> 
-      <table class="table">
-        <% Comment.where(approved: false).each do |comment| %>
-          <tr>
-            <td>
-              <div style="float: left; margin-top:7px; font-size:17px;"><%= link_to comment.user.username, comment.user %>: <%= comment.text %></div>
-              <%= link_to "Delete", post_comment_path(comment.post_id, comment), method: :delete,
-                                                       data: {confirm: "Are you sure?"}, 
-                                                       style: 'float: right;', class: 'btn btn-sm btn-danger'%>
-                <%= link_to "Approve", post_comment_approve_path(comment.post_id, comment), style: ' float: right;', class: 'btn btn-sm btn-warning' %>
-            </td>
-          </tr>
-        <% end %>
-      </table>
-      <table class="table">
-        <% User.all.each do |user| %>
-          <tr>
-            <td>
-            <div style="float: left; margin-top:7px; font-size:17px;"><%= link_to user.username, user_path %></div>
-            <%= link_to "Delete", root_path, method: :delete,
-                                                       data: {confirm: "Are you sure?"}, 
-                                                       style: 'float: right;', class: 'btn btn-sm btn-danger'%>
-            <%= link_to "Approve", root_path, style: ' float: right;', class: 'btn btn-sm btn-warning' %>
-            </td>
-          </tr>
-        <% end %>
-      </table>
       </div>
     </div>
-    <% end %>
 </div>

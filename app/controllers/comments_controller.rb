@@ -4,7 +4,6 @@ class CommentsController < ApplicationController
   before_action :set_comment_approve, only: [:approve]
   before_action :authenticate_user!
   before_action :owner_rights, only: [:destroy]
-  before_action :admin_rights, only: [:approve]
   
   def create
     @comment = Comment.new(comment_params)
@@ -48,14 +47,7 @@ class CommentsController < ApplicationController
     end
 
     def owner_rights
-      unless current_user == @comment.user || current_user.email == 'overroy@mail.ru'
-        flash[:error] = 'You have no rights'
-        redirect_to @post
-      end
-    end
-
-    def admin_rights
-      unless current_user.email == 'overroy@mail.ru'
+      unless current_user == @comment.user
         flash[:error] = 'You have no rights'
         redirect_to @post
       end

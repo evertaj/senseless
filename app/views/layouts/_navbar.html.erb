@@ -3,7 +3,7 @@
     <a class='navbar-brand' href='/'>
       Senseless<span class='light'>blog</span>
     </a>
-    <ul class="nav navbar-nav ove hidden-xs-down">
+    <ul class="nav navbar-nav ove hidden-xs-down", style="flex-direction: row">
       <li class="nav-item">
         <%= link_to 'Blog', root_path, class: "nav-link #{active_link(yield(:active_menu_item), 'blog')}" %>
       </li>

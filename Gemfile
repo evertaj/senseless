@@ -35,6 +35,10 @@ gem 'bcrypt-ruby', '3.1.1.rc1', :require => 'bcrypt'
 gem 'carrierwave', '>= 1.0.0.rc', '< 2.0'
 gem 'will_paginate', '~> 3.1', '>= 3.1.5'
 gem 'mina'
+gem 'inherited_resources', github: 'activeadmin/inherited_resources'
+gem 'activeadmin', github: 'activeadmin'
+gem 'cancan'
+gem 'pundit'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
