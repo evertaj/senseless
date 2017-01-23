@@ -6,6 +6,7 @@ class User < ApplicationRecord
   validates :username, presence: true, uniqueness: true
 
   has_many :posts, dependent: :destroy
+  mount_uploaders :avatars, AvatarUploader
 
   def own?(post)
     id == post.user_id

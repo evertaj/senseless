@@ -4,15 +4,14 @@
 <h2 class="page-header">Edit Profile</h2>
 <div class="row">
   <div class="col-md-4 col-sm-6 col-xs-12">
-    <div class="text-center">
-      <%= image_tag("default_avatar.png", class: "avatar img-thumbnail") %> 
-      <!-- <h6>Upload a different photo...</h6>
-        <input type="file" class="text-center center-block well well-sm"> -->
-    </div>
+    <form class="form-horizontal" role="form">
+    <% if @user.avatars[0] %>
+        <%= image_tag(@user.avatars[0].url, class: "img-responsive", style: "max-width: 100%;")%>
+    <% end %></p>
+    <%= f.file_field :avatars, multiple: true %>
   </div>
   <div class="col-md-8 col-sm-6 col-xs-12 personal-info">
     <h3>Personal info</h3><br>
-    <form class="form-horizontal" role="form">
       <div class="form-group">
         <label class="col-lg-3 control-label">Email:</label>
         <div class="col-lg-8">

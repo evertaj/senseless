@@ -14,7 +14,15 @@
         <%= link_to 'Contact', contact_path, class: "nav-link #{active_link(yield(:active_menu_item), 'contact')}" %>
       </li  class="nav-item ">
       <% if user_signed_in? %>
-          <li  class="nav-item"><%= link_to current_user.email, user_path(current_user.username), class: "nav-link #{active_link(yield(:active_menu_item), current_user.email )}" %></li>
+          <li  class="nav-item">
+            <% if current_user.avatars[0]%>
+              <div style="overflow:hidden; width:30px; height:30px; margin: 5px 7px 0 0; border-radius: 15px;">
+              <%= image_tag(current_user.avatars[0].url(:thumb)) %></div>
+            <%end%>
+          </li>
+          <li  class="nav-item">
+            <%= link_to current_user.username, user_path(current_user.username), class: "nav-link #{active_link(yield(:active_menu_item), current_user.email )}" %>
+          </li>
           <li  class="nav-item">
             <%= link_to 'Logout', destroy_user_session_path, :method => :delete, class: "nav-link " %>
           </li>
