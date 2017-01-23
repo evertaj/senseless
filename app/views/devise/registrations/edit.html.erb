@@ -60,11 +60,9 @@
       </div>
     </div>
   </div>
-  <div class="actions">
-    <div class="col-md-9"></div>
-    <div class="col-md-1"><%= f.submit "Update", class: "btn btn-md btn-success"%></div>
-    <div class="col-md-1"><%= link_to "Back", user_path(resource.username) , class: "btn btn-md btn-primary"%></div>
-    <div class="col-md-1"></div>
+  <div class="actions ove">
+    <div><%= f.submit "Update", class: "btn btn-md btn-success"%>
+    <%= link_to "Back", user_path(resource.username) , class: "btn btn-md btn-primary", style: "margin: 0 300px 0 20px;"%></div>
   </div>
   </form>
 <% end %>
