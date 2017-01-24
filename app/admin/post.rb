@@ -18,5 +18,17 @@ ActiveAdmin.register Post do
 #   permitted
 # end
 
+  index do
+    column :id
+    column :title
+    column :user
+    column :body do |post|
+      post.body.split(" ").each_with_object("") {|x,ob| break ob unless (ob.length + " ".length + x.length <= 200);ob << (" " + x)}.strip
+    end
+    column :created_at
+    column :banner_image_url
+    column :hidden
+    actions
+  end
 
 end
