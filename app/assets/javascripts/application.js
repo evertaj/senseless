@@ -17,16 +17,6 @@
 //= require turbolinks
 //= require_tree .
 
-document.addEventListener("turbolinks:load", function() {
-  tinymce.remove();
-  tinymce.init({  selector:'textarea#post_body',
-                  plugins: "image emoticons",
-                  skin: "custom",
-                  toolbar: "undo redo | styleselect | alignleft aligncenter alignright alignjustify | bold italic | emoticons image",
-                  height : 400
-   });
-})
-
 $("form").on("keypress", function (e) {
     if (e.keyCode == 13) {
         return false;
