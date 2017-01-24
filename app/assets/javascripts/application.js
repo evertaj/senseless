@@ -21,6 +21,7 @@ document.addEventListener("turbolinks:load", function() {
   tinymce.remove();
   tinymce.init({  selector:'textarea#post_body',
                   plugins: "image emoticons",
+                  skin: "custom",
                   toolbar: "undo redo | styleselect | alignleft aligncenter alignright alignjustify | bold italic | emoticons image",
                   height : 400
    });
