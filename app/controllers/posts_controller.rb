@@ -2,7 +2,6 @@ class PostsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create]  
   before_action :set_post, only: [:show, :edit, :update, :destroy]
   before_action :require_permission, only: [:edit, :destroy, :update]
-  before_action :superuser, only: [:show]
   # GET /posts
   # GET /posts.json
   def index

@@ -1,6 +1,5 @@
 Rails.application.configure do
 
-  config.assets.precompile += %w[tinymce/tiny_mce.js tinymce/langs/en.js tinymce/themes/advanced/editor_template.js]
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.

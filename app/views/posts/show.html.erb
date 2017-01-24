@@ -18,20 +18,20 @@
     </div>
     <hr style = 'background-color: black; height: 1px;'>
     <table class="table table-striped">
-        <% @showed_comments.order(:created_at).map do |comment| %>  
+        <% @post.comments.order(:created_at).map do |comment| %>
           <tr> 
             <td>
               <%= link_to "@#{comment.user.username}", user_path(comment.user.username), style: 'color: gray; font-weight: 500;' %> 
               said: <%=comment.text %> 
               <span style = 'color: gray'>(<%= comment.created_at.strftime("%d %b. %H:%M")%>)</span>
-              <% if current_user && current_user.is_admin?%>
+              <% if current_user == comment.user %>
+                <%if comment.approved == false %>
+                      <span style = 'color: gray'><i>not approved yet, only you can see it</i></span>
+                <% end %>
                 <%= link_to "Delete", post_comment_path(@post, comment), 
                                                     method: :delete,
                                                     data: {confirm: "Are you sure?"}, 
                                                     style: 'float: right;', class: 'btn btn-sm btn-danger'%>
-                <% unless comment.approved %>
-                  <%= link_to 'Approve', post_comment_approve_path(@post, comment), class: 'btn btn-sm btn-warning', style: 'float: right; margin-right: 15px'%>
-                <% end %>
               <% end %>
             </td>
           </tr>

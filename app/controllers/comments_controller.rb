@@ -33,12 +33,7 @@ class CommentsController < ApplicationController
       @comment = Comment.find(params[:id])
     end
 
-    def set_comment_approve
-      @comment = Comment.find(params[:comment_id])
-    end
-
-
-  def set_post
+    def set_post
       @post = Post.friendly.find(params[:post_id])
     end
 
