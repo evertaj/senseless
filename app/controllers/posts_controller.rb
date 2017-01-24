@@ -68,14 +68,6 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:title, :body, :description, :banner_image_url)
-    end
-
-    def superuser
-      if current_user && current_user.email == 'overroy@mail.ru'
-        @showed_comments = @post.comments
-      else
-        @showed_comments = @post.comments.where(approved: true)
-      end
+      params.require(:post).permit(:title, :body, :banner_image_url)
     end
 end

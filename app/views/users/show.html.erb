@@ -28,7 +28,7 @@
         <% @author_posts.each do |post| %>
           <tr> 
             <td> 
-              <div style="float: left; margin-top:7px; font-size:17px;"><%= link_to post.title, post %>: <%= truncate(strip_tags(post.body), length:80, :separator => ' ') %></div>
+              <div style="float: left; margin-top:7px; font-size:17px;"><%= link_to post.title, post %>: <%= truncate(strip_tags(post.body), length:70, :separator => ' ') %></div>
               <% if current_user && current_user == @user %>
               <%= link_to "Delete", post_path(post), method: :delete,
                                                      data: {confirm: "Are you sure?"}, 
