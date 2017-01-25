@@ -38,14 +38,18 @@
         </ul>
         <div class="card-block last">  
           <div class="action", style="display: inline; float: left;">
-            <%= f.submit class: "btn btn-primary"%>
+            <%= f.submit class: "btn btn-outline-primary", style: "border-radius: 0px;"%>
           </div>
           <% if @post.persisted? %>
-            <%= link_to "Cancel", @post_path, class: "btn btn-danger", style: "float: right;" %>
+            <%= link_to "Cancel", post_path, class: "btn btn-outline-danger", style: "float: right; border-radius: 0px;" %>
           <% else %>
-            <%= link_to "Cancel", root_path, class: "btn btn-danger", style: "float: right;" %>
+            <%= link_to "Cancel", root_path, class: "btn btn-outline-danger", style: "float: right; border-radius: 0px; " %>
           <% end %>
         </div>
+      </div>
+      <div style="margin-top: 10px;float: right">
+        <span style="margin-right: 10px;">U can hide dis post</span>
+        <%= f.check_box :hidden %>
       </div>
     </div>
       <div class="col-md-8">

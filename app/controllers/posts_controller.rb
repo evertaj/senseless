@@ -5,7 +5,7 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.most_recent.paginate(:page => params[:page], :per_page => 6)
+    @posts = Post.where(:hidden => false).most_recent.paginate(:page => params[:page], :per_page => 6)
   end
 
   # GET /posts/1
@@ -67,6 +67,6 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:title, :body, :banner_image_url)
+      params.require(:post).permit(:title, :body, :banner_image_url, :hidden)
     end
 end

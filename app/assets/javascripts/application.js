@@ -14,7 +14,6 @@
 //= require jquery_ujs
 //= require jquery
 //= require bootstrap-sprockets
-//= require turbolinks
 //= require_tree .
 
 $("form").on("keypress", function (e) {
