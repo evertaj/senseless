@@ -4,6 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   validates :username, presence: true, uniqueness: true
+  validates_format_of :username, :with => /(?=\A[A-Za-z\d]([-\w]{,498}[A-Za-z\d])?\Z)(?!.*admin.*)/i
 
   has_many :posts, dependent: :destroy
   mount_uploaders :avatars, AvatarUploader
