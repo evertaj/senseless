@@ -13,7 +13,7 @@
 #  hidden           :boolean          default("false")
 #
 
-require 'spec_helper'
+require_relative '../spec_helper'
 
 FactoryGirl.define do
   factory :post do
