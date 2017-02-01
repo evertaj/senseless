@@ -12,11 +12,16 @@
 #  user_id          :integer
 #  hidden           :boolean          default("false")
 #
+# Indexes
+#
+#  index_posts_on_slug  (slug) UNIQUE
+#
 
 require_relative '../spec_helper'
 
 FactoryGirl.define do
   factory :post do
-    it 'is named Five'
+    title "How to read a book effectively"
+    body  "There are five steps involved."
   end
 end

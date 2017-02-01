@@ -12,6 +12,10 @@
 #  user_id          :integer
 #  hidden           :boolean          default("false")
 #
+# Indexes
+#
+#  index_posts_on_slug  (slug) UNIQUE
+#
 
 class Post < ApplicationRecord
   extend FriendlyId

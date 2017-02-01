@@ -42,6 +42,7 @@ gem 'pundit'
 gem 'mini_magick'
 gem 'annotate'
 
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
@@ -52,6 +53,7 @@ group :development do
   gem 'web-console'
   gem 'mina-puma', require: false
   gem 'rspec-rails'
+  gem 'faker'
   gem 'factory_girl_rails'
   gem 'database_cleaner'
   gem 'capybara'

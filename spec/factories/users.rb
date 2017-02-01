@@ -26,19 +26,13 @@
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
 #
 
-class User < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
-  validates :username, presence: true, uniqueness: true
-  validates_format_of :username, with: /(?=\A[A-Za-z\d]([-\w]{,498}[A-Za-z\d])?\Z)(?!.*admin.*)/i
 
-  has_many :posts, dependent: :destroy
-  mount_uploaders :avatars, AvatarUploader
+require_relative '../spec_helper'
 
-  def own?(post)
-    id == post.user_id
+FactoryGirl.define do
+  factory :user do
+    sequence(:username) {|i| "qwe#{i}"}
+    email { "#{username}@example.com" }
+    password "password"
   end
-
 end
