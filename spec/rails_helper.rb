@@ -9,6 +9,7 @@ require 'rails/all'
 require 'database_cleaner'
 require 'factory_girl_rails'
 
+
 # Add additional requires below this line. Rails is not loaded until this point!
 
 # Requires supporting ruby files with custom matchers and macros, etc, in

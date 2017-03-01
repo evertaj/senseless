@@ -16,7 +16,7 @@
 #
 #  index_posts_on_slug  (slug) UNIQUE
 #
-
+require 'rspec/rails'
 require_relative '../spec_helper'
 
 FactoryGirl.define do
