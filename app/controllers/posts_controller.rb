@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create]  
-  before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :set_post, only: [:show, :edit, :update, :destroy, :like]
   before_action :require_permission, only: [:edit, :destroy, :update]
   # GET /posts
   # GET /posts.json
@@ -43,6 +43,12 @@ class PostsController < ApplicationController
       flash[:success] = 'Post was successfully updated.'
       redirect_to @post
     end
+  end
+
+  def like
+    new = @post.likes + 1
+    @post.update_column(:likes, new)
+    redirect_to root_path
   end
 
   # DELETE /posts/1

@@ -11,11 +11,13 @@
 #  banner_image_url :string
 #  user_id          :integer
 #  hidden           :boolean          default("false")
+#  likes            :integer          default("0")
 #
 # Indexes
 #
 #  index_posts_on_slug  (slug) UNIQUE
 #
+
 require 'rspec/rails'
 require_relative '../spec_helper'
 

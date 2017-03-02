@@ -11,6 +11,7 @@
 #  banner_image_url :string
 #  user_id          :integer
 #  hidden           :boolean          default("false")
+#  likes            :integer          default("0")
 #
 # Indexes
 #

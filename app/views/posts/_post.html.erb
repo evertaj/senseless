@@ -6,6 +6,12 @@
             <p class="published-date"><%= post.created_at.strftime("%d %b. %Y") %></p>
             <p class="card-text", style="height: 70px;"><%=truncate(strip_tags(post.body), length:130) %></p>
             <div class = 'btn btn-read'><%= link_to 'Read', post %></div>
+            <% if current_user %>
+              <%= link_to like_post_path(post), class: 'btn btn-read' do %>
+                  <%= image_tag('like.png') %>
+                  <%= post.likes %>
+              <% end %>
+            <% end %>
         </div>
     </div> 
 </div>

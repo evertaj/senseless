@@ -5,7 +5,10 @@ Rails.application.routes.draw do
   get '/about' => 'pages#about', as: :about
   get '/contact' => 'pages#contact', as: :contact
   root to: 'posts#index'
-  resources :posts do 
+  resources :posts do
+    member do
+      get 'like'
+    end
     resources :comments, param: :id, only: [:create, :destroy] do
       get :approve
     end
