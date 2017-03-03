@@ -26,6 +26,7 @@ class Post < ApplicationRecord
 
   belongs_to :user
   has_many :comments, dependent: :destroy
+  has_many :likes
 
   def should_generate_new_friendly_id?
     title_changed?

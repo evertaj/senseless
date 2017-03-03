@@ -16,8 +16,3 @@
 //= require bootstrap-sprockets
 //= require_tree .
 
-$("form").on("keypress", function (e) {
-    if (e.keyCode == 13) {
-        return false;
-    }
-});

@@ -6,12 +6,17 @@
             <p class="published-date"><%= post.created_at.strftime("%d %b. %Y") %></p>
             <p class="card-text", style="height: 70px;"><%=truncate(strip_tags(post.body), length:130) %></p>
             <div class = 'btn btn-read'><%= link_to 'Read', post %></div>
-            <% if current_user %>
-              <%= link_to like_post_path(post), class: 'btn btn-read' do %>
-                  <%= image_tag('like.png') %>
-                  <%= post.likes %>
+            <div class='btn btn-read', id="likes_counter">
+              <%= link_to like_post_path(post) do %>
+                <% if Like.where(user_id: current_user).find_by(post_id: post)%>
+                  <span>
+                <% else %>
+                  <span style="opacity: 0.5;">
+                <% end %>
+                <%= image_tag('like.svg')%></span>
+                <%= Like.where(post_id: post.id).count %>
               <% end %>
-            <% end %>
+            </div>
         </div>
     </div> 
 </div>

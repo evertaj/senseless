@@ -45,12 +45,6 @@ class PostsController < ApplicationController
     end
   end
 
-  def like
-    new = @post.likes + 1
-    @post.update_column(:likes, new)
-    redirect_to root_path
-  end
-
   # DELETE /posts/1
   # DELETE /posts/1.json
   def destroy

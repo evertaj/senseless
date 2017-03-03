@@ -35,6 +35,7 @@ class User < ApplicationRecord
   validates_format_of :username, with: /(?=\A[A-Za-z\d]([-\w]{,498}[A-Za-z\d])?\Z)(?!.*admin.*)/i
 
   has_many :posts, dependent: :destroy
+  has_many :likes
   mount_uploaders :avatars, AvatarUploader
 
   def own?(post)
