@@ -27,7 +27,6 @@ gem 'jbuilder', '~> 2.5'
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-gem 'rails-assets-tether', '>= 1.1.0'
 gem 'bootstrap', '~> 4.0.0.alpha5'
 gem 'friendly_id', '~> 5.1.0'
 gem 'devise'
@@ -41,6 +40,10 @@ gem 'cancan'
 gem 'pundit'
 gem 'mini_magick'
 gem 'annotate'
+
+source 'https://rails-assets.org' do
+  gem 'rails-assets-tether', '>= 1.3.3'
+end
 
 
 group :development, :test do
