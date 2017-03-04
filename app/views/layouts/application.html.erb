@@ -7,6 +7,20 @@
     <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
+    <script>tinymce.remove();</script>
+    <script>tinymce.init({ selector:'textarea#post_body',
+        plugins: "image emoticons",
+        skin: "custom",
+        toolbar: "undo redo | styleselect | alignleft aligncenter alignright alignjustify | bold italic | emoticons image",
+        height : 400 });
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            setTimeout(function(){
+                $('#flash').remove();
+            }, 3000);
+        })
+    </script>
   </head>
 
   <body>
