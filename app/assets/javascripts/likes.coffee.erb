@@ -1,6 +1,8 @@
 $(document).ready () ->
-  $('#likes_counter').click ->
-    id = $('.likes_val').data('id')
+  $('.likes_counter').click ->
+    like = $(@).find('.likes_val')
+    id = like.data('id')
+    img = $(@).find('.like_img')
     $.ajax
       type: "GET",
       url: '/posts/'+id+'/like',
@@ -8,8 +10,8 @@ $(document).ready () ->
       error: (jqXHR, textStatus, errorThrown) ->
         alert "AJAX Error: #{textStatus}"
       success: (data, textStatus, jqXHR) ->
-        if $('.like_img').hasClass("jopa")
-          $('.like_img').removeClass("jopa")
+        if img.hasClass("jopa")
+          img.removeClass("jopa")
         else
-          $('.like_img').addClass("jopa")
-        $('.likes_val').text("#{data.likes_count}")
+          img.addClass("jopa")
+        like.text("#{data.likes_count}")

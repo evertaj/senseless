@@ -7,11 +7,11 @@
             <p class="card-text", style="height: 70px;"><%=truncate(strip_tags(post.body), length:130) %></p>
             <div class = 'btn btn-read'><%= link_to 'Read', post %></div>
             <div class='btn btn-read' >
-              <%= link_to "#", id:"likes_counter", remote: true do %>
+              <%= link_to "#", class:"likes_counter", remote: true do %>
                 <% if Like.where(user_id: current_user).find_by(post_id: post)%>
-                  <span class='like_img'>
+                  <span class="like_img">
                 <% else %>
-                  <span class="jopa", class='like_img'>
+                  <span class="jopa like_img">
                 <% end %>
                 <%= image_tag('like.svg')%></span>
                 <span  class='likes_val' data-id="<%= post.id %>"><%= Like.where(post_id: post.id).count %></span>
