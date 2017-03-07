@@ -23,7 +23,7 @@ class ApplicationController < ActionController::Base
     else
       flash[:error] = 'Log in to like posts'
     end
-    redirect_to root_path
+    return render json: {likes_count: Like.where(post_id: post).count}
   end
 
   protected
