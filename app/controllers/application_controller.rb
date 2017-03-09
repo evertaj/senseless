@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
       user = current_user.id
       like = Like.where(user_id: user).find_by(post_id: post)
       if like
-        Like.destroy(like.id)
+        Like.find(like.id).destroy
       else
         Like.new(post_id: post, user_id: user).save
       end

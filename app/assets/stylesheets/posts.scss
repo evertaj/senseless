@@ -77,8 +77,12 @@
       background-size: cover;
       background-position: center;
 }
-.jopa {
+.not_liked {
   opacity: 0.5;
+}
+
+.noHover{
+  pointer-events: none;
 }
 
 .posts.edit, .posts.new {

@@ -10,8 +10,8 @@ $(document).ready () ->
       error: (jqXHR, textStatus, errorThrown) ->
         alert "AJAX Error: #{textStatus}"
       success: (data, textStatus, jqXHR) ->
-        if img.hasClass("jopa")
-          img.removeClass("jopa")
-        else
-          img.addClass("jopa")
-        like.text("#{data.likes_count}")
+          if img.hasClass("not_liked")
+            img.removeClass("not_liked")
+          else
+            img.addClass("not_liked")
+          like.text("#{data.likes_count}")
