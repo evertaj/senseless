@@ -21,9 +21,10 @@ permit_params :username, :email, :city, :bio, :sign_in_count, :remember_created_
     column :created_at
     column :last_sign_in_at
     column :avatars do |img|
-      if img not nil
+      if img != nil
         img.avatars[0].url
       end
+    end
     actions
   end
 
