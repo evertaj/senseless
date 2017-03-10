@@ -65,4 +65,5 @@ end
 
 group :production do
   gem 'therubyracer', platforms: :ruby
+  gem 'exception_notification'
 end

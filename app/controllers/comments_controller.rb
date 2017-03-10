@@ -23,11 +23,6 @@ class CommentsController < ApplicationController
     redirect_to @post
   end
 
-  def approve
-    @comment.update approved: true
-    redirect_to @post
-  end
-
   private
     def set_comment
       @comment = Comment.find(params[:id])
