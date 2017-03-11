@@ -81,6 +81,19 @@
   opacity: 0.5;
 }
 
+.lgrey {
+  background-color: lightslategrey;
+  color: white;
+  &:hover{
+    color: white;
+    background-color: dimgrey;
+  }
+}
+
+.hidden {
+  display: none;
+}
+
 .noHover{
   pointer-events: none;
 }

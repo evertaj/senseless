@@ -1,17 +1,19 @@
 $(document).ready () ->
-  $('.likes_counter').click ->
-    like = $(@).find('.likes_val')
-    id = like.data('id')
-    img = $(@).find('.like_img')
+  $(document).on 'click', '.likes_counter', () ->
+    $like = $(@).find('.likes_val')
+    $img = $(@).find('.like_img')
+    id = $like.data('id')
     $.ajax
       type: "GET",
       url: '/posts/'+id+'/like',
       dataType: 'json'
       error: (jqXHR, textStatus, errorThrown) ->
-        alert "AJAX Error: #{textStatus}"
+        console.log "AJAX Error: #{textStatus}"
       success: (data, textStatus, jqXHR) ->
-          if img.hasClass("not_liked")
-            img.removeClass("not_liked")
+          if $img.hasClass("not_liked")
+            $img.removeClass("not_liked")
           else
-            img.addClass("not_liked")
-          like.text("#{data.likes_count}")
+            $img.addClass("not_liked")
+          $like.text("#{data.likes_count}")
+  $(document).on 'click', '.bookmarks_dropdown', () ->
+    $('.bookmarks').fadeToggle()

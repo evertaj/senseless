@@ -17,10 +17,24 @@
           <p><%= @user.bio %> </p>
           <%end%>
           <% if current_user == @user %>
-            <%= link_to "Edit profile", edit_user_registration_path, class: "btn btn-primary btn-sm", style: "margin: 0px;" %>
+            <span><%= link_to "Edit profile", edit_user_registration_path, class: "btn btn-sm lgrey",
+                                                                           style: "margin: 0px;" %></span>
+            <span><%= link_to "New post", new_post_path, class: 'btn btn-sm lgrey'%></span>
           <% end %>
+          <div class='bookmarks_dropdown', style='cursor: pointer'>
+            <h6 style='margin-top: 10px;'>Bookmarks
+            <%= image_tag('triangle_down.png', style:'width:10px; height: 10px; margin-bottom: 2px;') %></h6>
+          </div>
+          <table class="hidden bookmarks table-striped">
+            <% Like.where(user_id: @user).each do |like| %>
+                <tr><td>
+                  <%= link_to "> #{Post.find(like.post_id).title}", Post.find(like.post_id) %> by
+                  <%= link_to "@#{Post.find(like.post_id).user.username}", Post.find(like.post_id).user %>
+                </td></tr>
+            <% end %>
+          </table>
         </div>
-      </div><br>
+      </div>
     </div>
     <div class="col-md-9 col-sm-9  user-wrapper">
       <div>
@@ -29,18 +43,16 @@
             <% @author_posts.each do |post| %>
               <tr>
                 <td>
-                  <div style="float: left; margin-top:7px; font-size:17px;"><%= link_to post.title, post %>: <%= truncate(strip_tags(post.body), length:70, :separator => ' ') %></div>
+                  <div class="post_title"><%= link_to post.title, post %>: <%= truncate(strip_tags(post.body), length:70, :separator => ' ') %></div>
                   <%= link_to "Delete", post_path(post), method: :delete,
                                                          data: {confirm: "Are you sure?"},
-                                                         style: 'float: right;', class: 'btn btn-sm btn-outline-danger'%>
-                  <%= link_to "Edit", edit_post_path(post), style: ' float: right;', class: 'btn btn-sm btn-outline-warning' %>
+                                                         style: 'float: right;', class: 'btn btn-sm btn-secondary'%><%= link_to "Edit", edit_post_path(post), style: ' float: right;', class: 'btn btn-sm btn-secondary' %>
                   <% if post.hidden %>
                     <%= link_to (image_tag "icon_eye_grey.png"), edit_post_path(post), style: ' float: right; margin: 9px 10px 0 0;'%>
                   <% end %>
                 </td>
               </tr>
             <% end %>
-            <tr><td><div style="margin-top:7px; font-size:16px;"><%= link_to "New post...", new_post_path, style:"color: gray;"%></div></td></tr>
           <% else %>
             <% @user.posts.where(hidden: false).each do |post| %>
               <tr><td>
