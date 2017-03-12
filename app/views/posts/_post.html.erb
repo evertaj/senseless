@@ -12,8 +12,8 @@
             <span style='color:black'><%= Like.where(post_id: post.id).count %></span>
           </div>
       <% else %>
-        <%= link_to "#", class:"likes_counter", remote: true do %>
-          <div class='btn btn-read' >
+        <span class='hover_this btn btn-read'>
+          <%= link_to "#", class:'likes_counter', remote: true do %>
             <% if Like.where(user_id: current_user).find_by(post_id: post)%>
               <span class="like_img">
             <% else %>
@@ -21,8 +21,22 @@
             <% end %>
             <%= image_tag('like.svg')%></span>
             <span  class='likes_val' style='color:black' data-id="<%= post.id %>"><%= Like.where(post_id: post.id).count %></span>
-          </div>
-        <% end %>
+            <% if Like.where(post_id: post.id).any? %>
+              <span class='who_likes hidden'>
+                <% if Like.where(user_id: current_user.id).find_by(post_id: post.id) %>
+                  <%= image_tag(current_user.avatars&.first.url(:thumb), class:'like_avatar current_like_avatar') %>
+                <% else %>
+                  <%= image_tag(current_user.avatars&.first.url(:thumb), class:'like_avatar current_like_avatar hidden') %>
+                <% end %>
+                <% if Like.where(post_id: post.id).any? %>
+                  <% Like.where.not(user_id: current_user).where(post_id: post.id).order("RANDOM()").limit(3).each do |like|%>
+                      <%= image_tag(like.user.avatars&.first.url(:thumb), class:'like_avatar') %>
+                  <% end %>
+                <% end %>
+              </span>
+            <% end %>
+          <% end %>
+        </span>
       <% end %>
     </div>
   </div>

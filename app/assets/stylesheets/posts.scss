@@ -94,6 +94,23 @@
   display: none;
 }
 
+.hover_this{
+  padding-top: 3px;
+  height: 2.4rem;
+  .like_img, .likes_val{
+    line-height: 30px;
+  }
+  .who_likes{
+     position: inherit;
+   }
+  .like_avatar {
+      width: 30px;
+      height: 30px;
+      border-radius: 15px;
+      margin: 0px -8px 0px 8px;
+    }
+}
+
 .noHover{
   pointer-events: none;
 }

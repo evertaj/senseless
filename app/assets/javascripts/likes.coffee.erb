@@ -12,8 +12,18 @@ $(document).ready () ->
       success: (data, textStatus, jqXHR) ->
           if $img.hasClass("not_liked")
             $img.removeClass("not_liked")
+            $('.current_like_avatar').fadeToggle("fast")
           else
             $img.addClass("not_liked")
+            $('.current_like_avatar').fadeToggle("fast")
           $like.text("#{data.likes_count}")
+          $('.likes_counter').blur()
+
   $(document).on 'click', '.bookmarks_dropdown', () ->
     $('.bookmarks').fadeToggle()
+
+  $('.hover_this').mouseenter () ->
+    $(@).find('.who_likes').fadeToggle("fast")
+
+  $('.hover_this').mouseleave () ->
+    $(@).find('.who_likes').fadeToggle("fast")
