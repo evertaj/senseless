@@ -6,12 +6,7 @@
       <p class="published-date"><%= post.created_at.strftime("%d %b. %Y") %></p>
       <p class="card-text", style="height: 70px;"><%=truncate(strip_tags(post.body), length:130) %></p>
       <div class = 'btn btn-read'><%= link_to 'Read', post %></div>
-      <% if not current_user %>
-          <div class = "btn btn-read noHover">
-            <span class="not_liked"><%= image_tag('like.svg')%></span>
-            <span style='color:black'><%= Like.where(post_id: post.id).count %></span>
-          </div>
-      <% else %>
+      <% if current_user %>
         <span class='hover_this btn btn-read'>
           <%= link_to "#", class:'likes_counter', remote: true do %>
             <% if Like.where(user_id: current_user).find_by(post_id: post)%>
@@ -19,24 +14,29 @@
             <% else %>
               <span class="not_liked like_img">
             <% end %>
-            <%= image_tag('like.svg')%></span>
-            <span  class='likes_val' style='color:black' data-id="<%= post.id %>"><%= Like.where(post_id: post.id).count %></span>
-            <% if Like.where(post_id: post.id).any? %>
+              <%= image_tag('like.svg')%></span>
+              <span  class='likes_val' style='color:black' data-id="<%= post.id %>"><%= Like.where(post_id: post.id).count %></span>
+              <% if Like.where(post_id: post.id).any? %>
               <span class='who_likes hidden'>
                 <% if Like.where(user_id: current_user.id).find_by(post_id: post.id) %>
-                  <%= image_tag(current_user.avatars&.first.url(:thumb), class:'like_avatar current_like_avatar') %>
-                <% else %>
-                  <%= image_tag(current_user.avatars&.first.url(:thumb), class:'like_avatar current_like_avatar hidden') %>
+                  <%= image_tag(check_avatar(current_user, 'thumb'), class:'like_avatar current_like_avatar') %>
+                <% else%>
+                  <%= image_tag(check_avatar(current_user, 'thumb'), class:'like_avatar current_like_avatar hidden') %>
                 <% end %>
                 <% if Like.where(post_id: post.id).any? %>
                   <% Like.where.not(user_id: current_user).where(post_id: post.id).order("RANDOM()").limit(3).each do |like|%>
-                      <%= image_tag(like.user.avatars&.first.url(:thumb), class:'like_avatar') %>
+                      <%= image_tag(check_avatar(like.user, 'thumb'), class:'like_avatar') %>
                   <% end %>
                 <% end %>
               </span>
             <% end %>
           <% end %>
-        </span>
+          </span>
+      <% else %>
+        <div class = "btn btn-read noHover">
+          <span class="not_liked"><%= image_tag('like.svg')%></span>
+          <span style='color:black'><%= Like.where(post_id: post.id).count %></span>
+        </div>
       <% end %>
     </div>
   </div>
