@@ -40,6 +40,16 @@
   }
 }
 
-.ove {
-  float: right;
+.custom_dropdown {
+  top:45px;
+  left: -63px;
+  background-color: #f7f7f7;
+  border: none;
+  box-shadow: 2px 0px 3px lightgrey;
+  border-radius: 0px;
+  .dropdown-item{
+   a{
+     color: black;
+   }
+  }
 }

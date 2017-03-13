@@ -1,9 +1,9 @@
-<nav class="navbar navbar-light bg-faded">
+<nav class="navbar navbar-light bg-faded navbar-static-top" xmlns:background-color="http://www.w3.org/1999/xhtml">
   <div class = 'container'>
     <a class='navbar-brand' href='/'>
       Senseless<span class='light'>blog</span>
     </a>
-    <ul class="nav navbar-nav ove hidden-xs-down", style="flex-direction: row">
+    <ul class="nav navbar-nav hidden-xs-down ", style="flex-direction: row; float:right">
       <li class="nav-item">
         <%= link_to 'Blog', root_path, class: "nav-link #{active_link(yield(:active_menu_item), 'blog')}" %>
       </li>
@@ -14,17 +14,24 @@
         <%= link_to 'Contact', contact_path, class: "nav-link #{active_link(yield(:active_menu_item), 'contact')}" %>
       </li  class="nav-item ">
       <% if user_signed_in? %>
-          <li  class="nav-item">
-            <% if current_user.avatars[0]%>
-              <div style="overflow:hidden; width:30px; height:30px; margin: 5px 7px 0 0; border-radius: 15px;">
-              <%= image_tag(current_user.avatars[0].url(:thumb)) %></div>
-            <%end%>
-          </li>
-          <li  class="nav-item">
-            <%= link_to current_user.username, user_path(current_user.username), class: "nav-link #{active_link(yield(:active_menu_item), current_user.email )}" %>
-          </li>
-          <li  class="nav-item">
-            <%= link_to 'Logout', destroy_user_session_path, :method => :delete, class: "nav-link " %>
+          <li  class="nav-item dropdown">
+            <%= image_tag(check_avatar(current_user,'thumb'), style:'width:30px; height:30px; margin: 5px 7px 0 0; border-radius: 15px; float:left;') %>
+            <%= link_to current_user.username, "#", { class: "nav-link dropdown-toggle #{active_link(yield(:active_menu_item),
+                                                      current_user.email )}", 'data-toggle' => "dropdown", style:'float:left' } %>
+            <ul class="dropdown-menu custom_dropdown">
+              <li class="dropdown-item">
+                <%= link_to 'My profile', user_path(current_user.username) %>
+              </li>
+              <div class="dropdown-divider"></div>
+              <li class="dropdown-item">
+                <%= link_to 'New post', new_post_path %>
+              </li>
+              <li class="dropdown-item">Bookmarks</li>
+              <div class="dropdown-divider"></div>
+              <li class="dropdown-item">
+                <%= link_to 'Logout', destroy_user_session_path, :method => :delete %>
+              </li>
+            </ul>
           </li>
       <% else %>
           <li  class="nav-item index-devise-block"><%= link_to 'Login', new_user_session_path, class: "nav-link #{active_link(yield(:active_menu_item), 'login')}" %></li>
