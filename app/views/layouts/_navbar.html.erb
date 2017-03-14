@@ -26,7 +26,9 @@
               <li class="dropdown-item">
                 <%= link_to 'New post', new_post_path %>
               </li>
-              <li class="dropdown-item">Bookmarks</li>
+              <li class="dropdown-item">
+                <%= link_to 'Bookmarks', bookmarks_posts_path %>
+              </li>
               <div class="dropdown-divider"></div>
               <li class="dropdown-item">
                 <%= link_to 'Logout', destroy_user_session_path, :method => :delete %>

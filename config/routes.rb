@@ -6,8 +6,11 @@ Rails.application.routes.draw do
   get '/contact' => 'pages#contact', as: :contact
   root to: 'posts#index'
   resources :posts do
+    collection do
+      get :bookmarks
+    end
     member do
-      get 'like'
+      get :like
     end
     resources :comments, param: :id, only: [:create, :destroy] do
       get :approve

@@ -1,0 +1,21 @@
+<% provide(:page_title, 'Bookmarks') %>
+
+
+<div class="row">
+  <% Like.where(user_id: current_user.id).each do |like|%>
+    <div class="col-md-6">
+      <div class="well well-sm">
+        <div class="row">
+          <div class="col-xs-3 col-md-3 text-center", style='width: 150px; height: 130px;overflow:hidden'>
+            <%= image_tag(Post.find(like.post_id).banner_image_url, class:"img-rounded img-responsive")%>
+          </div>
+          <div class="col-xs-9 col-md-9 section-box">
+            <h2><%= Post.find(like.post_id).title %></h2>
+            <p><%= truncate(strip_tags(Post.find(like.post_id).body), length:130) %></p>
+            <hr />
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

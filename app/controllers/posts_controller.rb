@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create]  
+  before_action :authenticate_user!, only: [:new, :create, :bookmarks]
   before_action :set_post, only: [:show, :edit, :update, :destroy, :like]
   before_action :require_permission, only: [:edit, :destroy, :update]
   # GET /posts
@@ -21,6 +21,10 @@ class PostsController < ApplicationController
 
   # GET /posts/1/edit
   def edit
+  end
+
+  def bookmarks
+    @posts = Post.where(:hidden => false).most_recent
   end
 
   # POST /posts
