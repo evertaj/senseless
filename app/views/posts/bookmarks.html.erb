@@ -10,8 +10,11 @@
             <%= image_tag(Post.find(like.post_id).banner_image_url, class:"img-rounded img-responsive")%>
           </div>
           <div class="col-xs-9 col-md-9 section-box">
-            <h2><%= Post.find(like.post_id).title %></h2>
-            <p><%= truncate(strip_tags(Post.find(like.post_id).body), length:130) %></p>
+            <h2>
+              <%= link_to Post.find(like.post_id).title, post_path(Post.find(like.post_id)), style:'color:black' %>
+              <%= link_to " @#{User.find(like.user_id).username}", user_path(User.find(like.user_id).username), style: 'color: gray; font-weight: 300; font-size:20px;'%>
+            </h2>
+            <p><%= truncate(strip_tags(Post.find(like.post_id).body), length:130, separator:' ') %></p>
             <hr />
           </div>
         </div>

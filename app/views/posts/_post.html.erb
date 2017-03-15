@@ -4,7 +4,7 @@
     <div class="card-block">
       <h4 class="card-title"><%= link_to post.title, post%><%= link_to " @#{post.user.username}", user_path(post.user.username), style: 'color: gray; font-weight: 300; font-size: 17px'%></h4>
       <p class="published-date"><%= post.created_at.strftime("%d %b. %Y") %></p>
-      <p class="card-text", style="height: 70px;"><%=truncate(strip_tags(post.body), length:130) %></p>
+      <p class="card-text", style="height: 70px;"><%=truncate(strip_tags(post.body), length:130, separator:' ') %></p>
       <div class = 'btn btn-read'><%= link_to 'Read', post %></div>
       <% if current_user %>
         <span class='hover_this btn btn-read'>
