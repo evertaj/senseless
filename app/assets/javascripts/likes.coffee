@@ -19,9 +19,6 @@ $(document).ready () ->
           $like.text("#{data.likes_count}")
           $('.likes_counter').blur()
 
-  $(document).on 'click', '.bookmarks_dropdown', () ->
-    $('.bookmarks').fadeToggle()
-
   $('.hover_this').mouseenter () ->
     $(@).find('.who_likes').fadeToggle("fast")
 

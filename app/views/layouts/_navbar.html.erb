@@ -1,3 +1,30 @@
+<div class="login_background hidden"></div>
+<div class="login_popup hidden">
+  <div class="login-box">
+    <div class="box-header"><h2>Log In</h2></div><br/>
+
+    <%= form_for("user", :url => user_session_path) do |f| %>
+        <div class="field">
+          <label for="username">E-mail</label><br/>
+          <%= f.email_field :email, autofocus: true %>
+        </div>
+
+        <div class="field">
+          <label for="password">Password</label><br/>
+          <%= f.password_field :password, autocomplete: "off" %>
+        </div>
+
+        <div class="actions">
+          <%= f.submit "Log in", class:'button', style:"float:left;margin-left:60px;width:70px" %>
+        </div>
+    <% end %>
+
+    <%= link_to new_user_registration_path do %>
+          <button class="button" style='float:left;margin-left:40px;'>Sign Up</button>
+    <% end %><br/><div style="clear: both;"></div>
+    <%= link_to 'Forgot your password?', new_user_password_path, class:"small" %>
+  </div>
+</div>
 <nav class="navbar navbar-light bg-faded navbar-static-top" xmlns:background-color="http://www.w3.org/1999/xhtml">
   <div class = 'container'>
     <a class='navbar-brand' href='/'>
@@ -36,7 +63,7 @@
             </ul>
           </li>
       <% else %>
-          <li  class="nav-item index-devise-block"><%= link_to 'Login', new_user_session_path, class: "nav-link #{active_link(yield(:active_menu_item), 'login')}" %></li>
+          <li  class="nav-item index-devise-block login_button"><%= link_to 'Login', '#', class: "nav-link #{active_link(yield(:active_menu_item), 'login')}" %></li>
       <% end %>
     </ul>
   </div>
