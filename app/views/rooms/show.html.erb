@@ -1,12 +1,10 @@
 <% provide(:page_title, 'Chat!')%>
 
-<div id="messages">
-  <%= render @messages %>
-</div>
-
-<div class="panel-footer">
-  <div class="input-group">
-    <input type="text" class="form-control">
-    <span class="input-group-btn"><button class="btn btn-default" type="button">Send</button></span>
+<div class="chat-message" >
+  <ul class="chat" id="messages">
+      <%= render @messages %>
+  </ul>
+  <div class="input-box" >
+    <input type="text" put class="form-control border no-shadow no-rounded" placeholder="Type your message here" id="message_input" />
   </div>
 </div>
