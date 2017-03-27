@@ -8,7 +8,7 @@ ul {
 }
 
 .chat-message {
-  padding: 60px 20px 115px;
+  padding: 30px 20px 115px;
 }
 
 .chat {
@@ -128,6 +128,11 @@ a:hover, a:active, a:focus {
   outline: 0;
 }
 
-#message_input{
-  margin-top: 30px;
+.chat_input {
+  width: 84%;
+  margin: 30px 0px 0px 110px;
+  border: 1px solid lightgrey;
+  border-radius: 5px;
+  padding: 10px;
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.39), 0 -1px 1px #FFF, 0 1px 0 #FFF;
 }
