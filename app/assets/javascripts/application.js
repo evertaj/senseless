@@ -15,3 +15,6 @@
 //= require tether
 //= require bootstrap-sprockets
 //= require_tree .
+
+
+App.cable = ActionCable.createConsumer("/cable")
