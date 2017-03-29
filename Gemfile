@@ -40,6 +40,7 @@ gem 'cancan'
 gem 'pundit'
 gem 'mini_magick'
 gem 'annotate'
+gem 'redis'
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-tether', '>= 1.3.3'
@@ -66,5 +67,4 @@ end
 group :production do
   gem 'therubyracer', platforms: :ruby
   gem 'exception_notification'
-  gem 'redis'
 end
