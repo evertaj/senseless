@@ -16,7 +16,6 @@
             <% end %>
               <%= image_tag('like.svg')%></span>
               <span  class='likes_val' style='color:black' data-id="<%= post.id %>"><%= Like.where(post_id: post.id).count %></span>
-              <% if Like.where(post_id: post.id).any? %>
               <span class='who_likes hidden'>
                 <% if Like.where(user_id: current_user.id).find_by(post_id: post.id) %>
                   <%= image_tag(check_avatar(current_user, 'thumb'), class:'like_avatar current_like_avatar') %>
@@ -29,7 +28,6 @@
                   <% end %>
                 <% end %>
               </span>
-            <% end %>
           <% end %>
           </span>
       <% else %>
