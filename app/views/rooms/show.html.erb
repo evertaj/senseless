@@ -4,7 +4,19 @@
   <ul class="chat" id="messages">
       <%= render @messages %>
   </ul>
-  <div class="input-box" >
+  <div class="input_div" >
     <input type="text" put class="chat_input" placeholder="Type your message here" id="message_input" />
+    <div class="sticker_popup_btn">
+      <%= image_tag('stick.png') %>
+    </div>
+    <div class="sticker_popup hidden">
+      <a href="/" class="sticker" data-id="1"><%= image_tag('default_stickers/1.png', class: "sticker_img") %></a>
+      <a href="/" class="sticker" data-id="7"><%= image_tag('default_stickers/7.png', class: "sticker_img") %></a>
+      <a href="/" class="sticker" data-id="3"><%= image_tag('default_stickers/3.png', class: "sticker_img") %></a>
+      <a href="/" class="sticker" data-id="4"><%= image_tag('default_stickers/4.png', class: "sticker_img") %></a>
+      <a href="/" class="sticker" data-id="8"><%= image_tag('default_stickers/8.png', class: "sticker_img") %></a>
+      <a href="/" class="sticker" data-id="5"><%= image_tag('default_stickers/5.png', class: "sticker_img") %></a>
+    </div>
   </div>
+
 </div>

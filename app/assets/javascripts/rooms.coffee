@@ -12,3 +12,12 @@ $(document).on 'keypress', '#message_input', (e) ->
     App.room.speak(e.target.value)
     e.target.value = ''
     e.preventDefault()
+
+$(document).on 'click', '.sticker_popup_btn', (e) ->
+  $('.sticker_popup').fadeToggle()
+  $('.sticker').on 'click', (e)  ->
+    $st_url = $(@).find('img').attr('src')
+    stick = "<img src='#{$st_url}' />"
+    App.room.speak(stick)
+    $('.sticker_popup').toggle()
+    e.preventDefault()
