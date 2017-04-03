@@ -15,6 +15,7 @@ $(document).on 'keypress', '#message_input', (e) ->
 
 $(document).on 'click', '.sticker_popup_btn', (e) ->
   $('.sticker_popup').fadeToggle()
+  $('.sticker_popup_after').fadeToggle()
   e.preventDefault()
 
 $(document).on 'click', '.sticker', (e)  ->
@@ -22,4 +23,5 @@ $(document).on 'click', '.sticker', (e)  ->
   stick = "<img src='#{$st_url}' class='sticker_img' />"
   App.room.speak(stick)
   $('.sticker_popup').hide()
+  $('.sticker_popup_after').hide()
   e.preventDefault()

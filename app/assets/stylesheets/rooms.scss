@@ -9,6 +9,7 @@ ul {
 
 .chat-message {
   padding: 30px 20px 70px;
+  max-height: 100%;
 }
 
 .chat {
@@ -137,18 +138,44 @@ a:hover, a:active, a:focus {
   position: relative;
   top: -35px;
   left: 860px;
+  cursor: pointer;
+  width: 24px;
 }
 
 .sticker_popup {
-  width: 100%;
-  heigth: 70px;
+  overflow: scroll;
+  width: 360px;
+  z-index: 119;
+  right: -530px;
+  bottom: 0px;
+  margin-top: -278px;
+  height: 200px;
+  box-shadow: 0 1px 3px rgba(0,0,0,.1);
+  background-color: #fff;
+  border: 1px solid #c5d0db;
   position: relative;
-  top: -210px;
+}
+
+.sticker_popup_after {
+  border-width: 5px;
+  border-top-color: #ebeef2;
+  -webkit-transform: translate3d(0, -0.5px, 0);
+  transform: rotate(45deg);
+  left: 867px;
+  top: -4px;
+  position: relative;
+  border-bottom: 1px solid #c5d0db;
+  content: '';
+  height: 8px;
+  width: 8px;
+  background: white;
+  border-right: 1px solid #c5d0db;
+  z-index: 999;
 }
 
 .sticker_img {
-  height: 140px;
-  width: 140px;
+  height: 100px;
+  width: 100px;
   padding: 3px;
   margin-right: 6px;
 }
