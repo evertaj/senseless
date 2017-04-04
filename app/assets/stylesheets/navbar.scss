@@ -1,6 +1,9 @@
 .navbar {
   border-radius: 0;
   margin-bottom: 20px;
+  position: fixed;
+  width: 100%;
+  z-index: 9999;
   .navbar-brand {
     font-weight: bolder;
     .light {

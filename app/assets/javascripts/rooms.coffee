@@ -14,14 +14,12 @@ $(document).on 'keypress', '#message_input', (e) ->
     e.preventDefault()
 
 $(document).on 'click', '.sticker_popup_btn', (e) ->
-  $('.sticker_popup').fadeToggle()
-  $('.sticker_popup_after').fadeToggle()
+  $('.stk').fadeToggle()
   e.preventDefault()
 
 $(document).on 'click', '.sticker', (e)  ->
   $st_url = $(@).find('img').attr('src')
   stick = "<img src='#{$st_url}' class='sticker_img' />"
   App.room.speak(stick)
-  $('.sticker_popup').hide()
-  $('.sticker_popup_after').hide()
+  $('.stk').hide()
   e.preventDefault()

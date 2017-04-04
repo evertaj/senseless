@@ -1,15 +1,21 @@
 <% provide(:page_title, 'Chat!')%>
 
-<div class="chat-message" >
-  <ul class="chat" id="messages">
-      <%= render @messages %>
-  </ul>
-  <div class="input_div" >
-    <input type="text" put class="chat_input" placeholder="Type your message here" id="message_input" />
-    <div class="sticker_popup_btn">
-      <%= image_tag('stick.png') %>
-    </div>
-    <div class="sticker_popup hidden">
+
+<div class="col-md-3" style="float:left;">
+
+</div>
+<div class="col-md-9" style="float:left;">
+
+
+  <ol class="chat" id="messages">
+    <%= render @messages %>
+  </ol>
+  <input class="textarea" type="text" placeholder="Type here!" id="message_input"/>
+  <div class="sticker_popup_btn">
+    <%= image_tag('stick.png') %>
+  </div>
+  <div class="stk hidden">
+    <div class="sticker_popup">
       <div class="sticker_content" style='margin-left: 10px;'>
         <a href="/" class="sticker" data-id="1"><%= image_tag('default_stickers/1.png', class: "sticker_img") %></a>
         <a href="/" class="sticker" data-id="2"><%= image_tag('default_stickers/2.png', class: "sticker_img") %></a>
@@ -25,7 +31,7 @@
         <a href="/" class="sticker" data-id="12"><%= image_tag('default_stickers/12.png', class: "sticker_img") %></a>
       </div>
     </div>
-    <div class="sticker_popup_after hidden"></div>
+    <div class="sticker_popup_after"></div>
   </div>
 
 </div>
