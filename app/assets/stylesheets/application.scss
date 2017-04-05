@@ -20,5 +20,14 @@
 @import "util";
 
 html {
-  height: 100%;
+  background-color: white;
+}
+
+
+/* Track */
+
+::-webkit-scrollbar {
+  width: 12px;
+  box-shadow: none;
+  background-color: white;
 }
