@@ -1,37 +1,40 @@
 <% provide(:page_title, 'Chat!')%>
 
 
-<div class="col-md-3" style="float:left;">
+<div class="col-md-3 menu" style="float:left;border: 2px solid #fafafa">
 
 </div>
-<div class="col-md-9" style="float:left;">
-
-
+<div class="col-md-9" style="float:left; height: 550px; overflow: scroll; border: 2px solid #fafafa">
   <ol class="chat" id="messages">
     <%= render @messages %>
   </ol>
-  <input class="textarea" type="text" placeholder="Type here!" id="message_input"/>
-  <div class="sticker_popup_btn">
-    <%= image_tag('stick.png') %>
-  </div>
-  <div class="stk hidden">
-    <div class="sticker_popup">
-      <div class="sticker_content" style='margin-left: 10px;'>
-        <a href="/" class="sticker" data-id="1"><%= image_tag('default_stickers/1.png', class: "sticker_img") %></a>
-        <a href="/" class="sticker" data-id="2"><%= image_tag('default_stickers/2.png', class: "sticker_img") %></a>
-        <a href="/" class="sticker" data-id="3"><%= image_tag('default_stickers/3.png', class: "sticker_img") %></a>
-        <a href="/" class="sticker" data-id="4"><%= image_tag('default_stickers/4.png', class: "sticker_img") %></a>
-        <a href="/" class="sticker" data-id="5"><%= image_tag('default_stickers/5.png', class: "sticker_img") %></a>
-        <a href="/" class="sticker" data-id="6"><%= image_tag('default_stickers/6.png', class: "sticker_img") %></a>
-        <a href="/" class="sticker" data-id="7"><%= image_tag('default_stickers/7.png', class: "sticker_img") %></a>
-        <a href="/" class="sticker" data-id="8"><%= image_tag('default_stickers/8.png', class: "sticker_img") %></a>
-        <a href="/" class="sticker" data-id="9"><%= image_tag('default_stickers/9.png', class: "sticker_img") %></a>
-        <a href="/" class="sticker" data-id="10"><%= image_tag('default_stickers/10.png', class: "sticker_img") %></a>
-        <a href="/" class="sticker" data-id="11"><%= image_tag('default_stickers/11.png', class: "sticker_img") %></a>
-        <a href="/" class="sticker" data-id="12"><%= image_tag('default_stickers/12.png', class: "sticker_img") %></a>
-      </div>
+</div>
+<div style="clear:both"></div>
+<div class="col-md-3" style="float:left; height: 50px; background-color: #fafafa"></div>
+<div class="col-md-9" style="float:left">
+  <div class ='r_input'>
+    <input class="textarea" type="text" placeholder="Type here!" id="message_input"/>
+    <div class="sticker_popup_btn">
+      <%= image_tag('stick.png') %>
     </div>
-    <div class="sticker_popup_after"></div>
+    <div class="stk hidden">
+      <div class="sticker_popup">
+        <div class="sticker_content" style='margin-left: 10px;'>
+          <a href="/" class="sticker" data-id="1"><%= image_tag('default_stickers/1.png', class: "sticker_img") %></a>
+          <a href="/" class="sticker" data-id="2"><%= image_tag('default_stickers/2.png', class: "sticker_img") %></a>
+          <a href="/" class="sticker" data-id="3"><%= image_tag('default_stickers/3.png', class: "sticker_img") %></a>
+          <a href="/" class="sticker" data-id="4"><%= image_tag('default_stickers/4.png', class: "sticker_img") %></a>
+          <a href="/" class="sticker" data-id="5"><%= image_tag('default_stickers/5.png', class: "sticker_img") %></a>
+          <a href="/" class="sticker" data-id="6"><%= image_tag('default_stickers/6.png', class: "sticker_img") %></a>
+          <a href="/" class="sticker" data-id="7"><%= image_tag('default_stickers/7.png', class: "sticker_img") %></a>
+          <a href="/" class="sticker" data-id="8"><%= image_tag('default_stickers/8.png', class: "sticker_img") %></a>
+          <a href="/" class="sticker" data-id="9"><%= image_tag('default_stickers/9.png', class: "sticker_img") %></a>
+          <a href="/" class="sticker" data-id="10"><%= image_tag('default_stickers/10.png', class: "sticker_img") %></a>
+          <a href="/" class="sticker" data-id="11"><%= image_tag('default_stickers/11.png', class: "sticker_img") %></a>
+          <a href="/" class="sticker" data-id="12"><%= image_tag('default_stickers/12.png', class: "sticker_img") %></a>
+        </div>
+      </div>
+      <div class="sticker_popup_after"></div>
+    </div>
   </div>
-
 </div>
