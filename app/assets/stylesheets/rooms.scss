@@ -151,22 +151,6 @@ a{
   -ms-user-select: none;
 }
 
-@-webikt-keyframes pulse {
-  from { opacity: 0; }
-  to { opacity: 0.5; }
-}
-
-::-webkit-scrollbar {
-  min-width: 12px;
-  width: 12px;
-  max-width: 12px;
-  min-height: 12px;
-  height: 12px;
-  max-height: 12px;
-  background: #e5e5e5;
-  box-shadow: inset 0px 50px 0px rgba(82,179,217,0.9), inset 0px -52px 0px #fafafa;
-}
-
 ::-webkit-scrollbar-thumb {
   background: #bbb;
   border: none;
@@ -183,11 +167,6 @@ a{
 ::-webkit-scrollbar-thumb:active {
   background: #aaa;
   box-shadow: inset 0px 0px 3px #7f7f7f;
-}
-
-::-webkit-scrollbar-button {
-  display: block;
-  height: 26px;
 }
 
 /* T Y P E */
@@ -220,7 +199,8 @@ input.textarea {
 
 .stk {
   .sticker_popup {
-    overflow: scroll;
+    overflow-y: scroll;
+    overflow-x: hidden;
     width: 360px;
     z-index: 99999;
     left: 12px;
